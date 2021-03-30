@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/shopware/platform/master/src/Core/System/SystemConfig/Schema/config.xsd">
+
+    <card>
+        <title>Promotion configuration</title>
+        <input-field type="bool">
+            <name>showPromotion</name>
+            <label>Show promotion</label>
+            <label lang="de-DE">Show promotion</label>
+        </input-field>
+        <input-field type="int">
+            <name>maxNumPromo</name>
+            <label>Max number of promotions</label>
+            <label lang="de-DE">Max number of promotions</label>
+        </input-field>
+    </card>
+</config>

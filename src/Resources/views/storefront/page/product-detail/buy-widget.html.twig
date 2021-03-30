@@ -1,0 +1,12 @@
+{% sw_extends '@Storefront/storefront/page/product-detail/buy-widget.html.twig' %}
+{% block page_product_detail_ordernumber_container %}
+    {{ parent() }}
+    {% if page.extensions.count > 0 %}
+        <p>Promotions:</p>
+        <ul>
+        {% for promo in page.extensions.promo_list %}
+            <li>{{ promo.name }} {{ promo.discountRate }} {{ promo.startDate.format('dd-M-Y') }}-{{ promo.expiredDate.format('dd-M-Y') }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+{% endblock %}

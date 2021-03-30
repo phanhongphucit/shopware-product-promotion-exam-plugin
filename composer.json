@@ -1,0 +1,18 @@
+{
+  "name": "myplugin/product-promotion",
+  "description": "Skeleton plugin",
+  "type": "shopware-platform-plugin",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "ProductPromotionExam\\": "src/"
+    }
+  },
+  "extra": {
+    "shopware-plugin-class": "ProductPromotionExam\\ProductPromotionExam",
+    "label": {
+      "de-DE": "Promotion plugin",
+      "en-GB": "Promotion plugin"
+    }
+  }
+}
