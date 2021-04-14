@@ -11,6 +11,7 @@ use Shopware\Core\Framework\DataAbstractionLayer\Field\Flag\Required;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\FloatField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\IdField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\ManyToOneAssociationField;
+use Shopware\Core\Framework\DataAbstractionLayer\Field\ReferenceVersionField;
 use Shopware\Core\Framework\DataAbstractionLayer\Field\StringField;
 use Shopware\Core\Framework\DataAbstractionLayer\FieldCollection;
 
@@ -39,9 +40,9 @@ class PromotionExamDefinition extends EntityDefinition {
             new DateTimeField('start_date', 'startDate'),
             new DateTimeField('expired_date', 'expiredDate'),
 
+            (new ReferenceVersionField(ProductDefinition::class)),
             (new FkField('product_id', 'productId', ProductDefinition::class)),
             new ManyToOneAssociationField('product', 'product_id', ProductDefinition::class)
         ]);
     }
-
 }

@@ -30,5 +30,19 @@
         <service id="ProductPromotionExam\Resources\snippet\en_GB\SnippetFile_en_GB">
             <tag name="shopware.snippet.file"/>
         </service>
+
+        <service id="ProductPromotionExam\Core\Checkout\PromotionExam\Cart\PromotionExamCartCollector">
+            <argument id="promotion_exam.repository" type="service" />
+
+            <tag name="shopware.cart.collector" priority="6000"/>
+        </service>
+
+        <service id="ProductPromotionExam\Core\Checkout\PromotionExam\Cart\PromotionExamCartProcessor">
+            <argument id="Shopware\Core\Checkout\Cart\Price\PercentagePriceCalculator" type="service" />
+
+            <tag name="shopware.cart.processor"/>
+        </service>
+
+
     </services>
 </container>

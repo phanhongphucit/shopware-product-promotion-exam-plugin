@@ -34,6 +34,11 @@ class PromotionExamEntity extends Entity
     protected $product;
 
     /**
+     * @var string
+     */
+    protected $productId;
+
+    /**
      * @return string
      */
     public function getName(): string
@@ -120,6 +125,24 @@ class PromotionExamEntity extends Entity
     public function setProduct(?ProductEntity $product): PromotionExamEntity
     {
         $this->product = $product;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductId(): string
+    {
+        return $this->productId;
+    }
+
+    /**
+     * @param string $productId
+     * @return PromotionExamEntity
+     */
+    public function setProductId(string $productId): PromotionExamEntity
+    {
+        $this->productId = $productId;
         return $this;
     }
 

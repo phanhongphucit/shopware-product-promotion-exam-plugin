@@ -2,6 +2,7 @@
 
 {% block component_product_box_rating %}
     {% if id in searchResult.extensions.promotion_exam.getVars() %}
+
     <span style="color: red; font-weight: bold">Promoted</span>
     {% endif %}
     {{ parent() }}

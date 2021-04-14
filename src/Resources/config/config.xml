@@ -8,11 +8,14 @@
             <name>showPromotion</name>
             <label>Show promotion</label>
             <label lang="de-DE">Show promotion</label>
+            <defaultValue>true</defaultValue>
         </input-field>
         <input-field type="int">
             <name>maxNumPromo</name>
             <label>Max number of promotions</label>
             <label lang="de-DE">Max number of promotions</label>
+            <defaultValue>5</defaultValue>
         </input-field>
+
     </card>
 </config>

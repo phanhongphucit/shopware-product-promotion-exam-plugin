@@ -3,6 +3,7 @@
 namespace ProductPromotionExam\Storefront\Subscriber;
 
 use Doctrine\DBAL\Connection;
+use mysql_xdevapi\Exception;
 use Shopware\Core\Content\Cms\SalesChannel\Struct\TextStruct;
 use Shopware\Core\Content\Product\Events\ProductListingResultEvent;
 use Shopware\Core\Framework\Context;
