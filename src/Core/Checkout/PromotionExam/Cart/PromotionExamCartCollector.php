@@ -44,7 +44,7 @@ class PromotionExamCartCollector implements CartDataCollectorInterface {
         // Add promotionLineItems to productLineItem
         $productPromos = $this->getMapProductId2PromoExams($promoExams, $context);
         foreach ($productLineItems as $pli) {
-            $this->addPromoLineItems($pli, $productPromos[$pli->getReferencedId()]);
+            $this->addPromoLineItems($pli, $productPromos[$pli->getReferencedId()], $data);
         }
     }
 
@@ -70,19 +70,6 @@ class PromotionExamCartCollector implements CartDataCollectorInterface {
 
     /**
      * @param LineItem $productLineItem
-     * @param array $promoExams
-     */
-    private function addPromoLineItems(LineItem $productLineItem, array $promoExams)
-    {
-        foreach ($promoExams as $pe) {
-            $promoLineItem = new LineItem($pe->getId() . self::PROMO_EXAM, self::PROMO_EXAM, $pe->getId(), $productLineItem->getQuantity());
-            $this->enrichPromotion($productLineItem, $promoLineItem, $pe);
-            $productLineItem->addChild($promoLineItem);
-        }
-    }
-
-    /**
-     * @param LineItem $productLineItem
      * @param LineItem $promoLineItem
      * @param PromotionEntity $pe
      */
@@ -92,6 +79,27 @@ class PromotionExamCartCollector implements CartDataCollectorInterface {
         $promoLineItem->setGood(false);
         $promoLineItem->setStackable(true);
 
+    }
+
+    /**
+     * @param LineItem $productLineItem
+     * @param array $promoExams
+     */
+    private function addPromoLineItems(LineItem $productLineItem, array $promoExams, CartDataCollection $data)
+    {
+        foreach ($promoExams as $pe) {
+            $data->get(self::PROMO_EXAM.$pe->getId());
+
+            $promoLineItemId = $pe->getId() . self::PROMO_EXAM;
+            $promoLineItem = $productLineItem->getChildren()->get($promoLineItemId);
+            if(!$promoLineItem) {
+                $promoLineItem = new LineItem($promoLineItemId, self::PROMO_EXAM, $pe->getId(), $productLineItem->getQuantity());
+                $productLineItem->addChild($promoLineItem);
+            } else {
+                $promoLineItem->setQuantity($productLineItem->getQuantity());
+            }
+            $this->enrichPromotion($productLineItem, $promoLineItem, $pe);
+        }
     }
 
 
